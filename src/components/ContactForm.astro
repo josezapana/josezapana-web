@@ -1,0 +1,85 @@
+---
+---
+
+<section id="contacto" class="border border-zinc-800 bg-zinc-900/40 p-8 rounded-xl my-16">
+  <div class="max-w-2xl">
+    <h2 class="text-2xl font-bold text-zinc-100 mb-2">Vinculación Tecnológica & Pasantías</h2>
+    <p class="text-zinc-400 text-sm mb-6 leading-relaxed">
+      ¿Sos representante de una empresa o institución? Ponete en contacto para coordinar pasantías con alumnos destacados, proyectos de I+D o consultoría en ingeniería de software e IA.
+    </p>
+
+    <form
+      name="contacto-empresas"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      action="/exito"
+      class="space-y-4"
+    >
+      <!-- Campo anti-spam silencioso (Honeypot) -->
+      <p class="hidden">
+        <label>No llenar esto si sos humano: <input name="bot-field" /></label>
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for="nombre" class="block text-xs font-mono text-zinc-400 mb-1 uppercase tracking-wider">Nombre / Empresa</label>
+          <input
+            type="text"
+            name="nombre"
+            id="nombre"
+            required
+            class="w-full bg-zinc-950 border border-zinc-800 text-zinc-100 rounded px-3 py-2 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+            placeholder="Ej: Globant / Techint / Startup"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block text-xs font-mono text-zinc-400 mb-1 uppercase tracking-wider">Correo Electrónico</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            class="w-full bg-zinc-950 border border-zinc-800 text-zinc-100 rounded px-3 py-2 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+            placeholder="contacto@empresa.com"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label for="asunto" class="block text-xs font-mono text-zinc-400 mb-1 uppercase tracking-wider">Motivo de Consulta</label>
+        <select
+          name="asunto"
+          id="asunto"
+          required
+          class="w-full bg-zinc-950 border border-zinc-800 text-zinc-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+        >
+          <option value="pasantias">Reclutamiento / Pasantías de Alumnos</option>
+          <option value="investigacion">Proyecto de I+D / Vinculación UNJu</option>
+          <option value="academico">Consulta Académica / Cátedra</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="mensaje" class="block text-xs font-mono text-zinc-400 mb-1 uppercase tracking-wider">Mensaje</label>
+        <textarea
+          name="mensaje"
+          id="mensaje"
+          rows="4"
+          required
+          class="w-full bg-zinc-950 border border-zinc-800 text-zinc-100 rounded px-3 py-2 text-sm focus:outline-none focus:border-emerald-500 transition-colors"
+          placeholder="Detallá los requerimientos o perfil del puesto..."
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-zinc-950 font-mono text-sm font-semibold px-6 py-2.5 rounded transition-colors"
+      >
+        Enviar Mensaje &rarr;
+      </button>
+    </form>
+  </div>
+</section>
