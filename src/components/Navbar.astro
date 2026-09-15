@@ -1,0 +1,58 @@
+---
+const navLinks = [
+  { name: 'Sobre mí', href: '#sobre-mi' },
+  { name: 'Trayectoria', href: '#trayectoria' },
+  { name: 'Áreas', href: '#areas' },
+  { name: 'Materias', href: '#materias' },
+  { name: 'Proyectos Alumnos', href: '#alumnos' },
+  { name: 'Contacto', href: '#contacto' },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+    <nav class="glass-card rounded-2xl px-4 py-3 flex items-center justify-between shadow-lg border border-border/50">
+      
+      <!-- Brand / Logo -->
+      <a href="#sobre-mi" class="flex items-center space-x-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+        <span class="font-bold text-base tracking-tight text-foreground">
+          Jose <span class="text-gradient">Zapana</span>
+        </span>
+      </a>
+
+      <!-- Desktop Links -->
+      <ul class="hidden md:flex items-center space-x-6 text-sm font-medium">
+        {navLinks.map((link) => (
+          <li>
+            <a 
+              href={link.href} 
+              class="text-muted-foreground hover:text-foreground transition-colors duration-200"
+            >
+              {link.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Action Buttons & Selector de Idioma Estilizado -->
+      <div class="flex items-center space-x-3">
+        <div class="relative">
+          <select class="bg-secondary/80 text-foreground text-xs font-semibold rounded-lg px-2.5 py-1.5 border border-border/60 focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer appearance-none pr-6">
+            <option value="es" selected class="bg-neutral-900 text-foreground">ES</option>
+            <option value="en" class="bg-neutral-900 text-foreground">EN</option>
+          </select>
+          <span class="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground text-[10px]">▼</span>
+        </div>
+
+        <a 
+          href="#contacto" 
+          class="text-xs font-semibold px-4 py-2 rounded-xl bg-primary text-primary-foreground hover:opacity-90 transition duration-200 shadow-md hidden sm:inline-block"
+        >
+          Vinculación / Pasantías
+        </a>
+      </div>
+
+    </nav>
+  </div>
+</header>

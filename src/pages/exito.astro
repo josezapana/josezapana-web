@@ -1,18 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
 ---
-
-<Layout title="Mensaje Enviado | Ing. José Zapana">
-  <div class="max-w-xl mx-auto my-20 text-center">
-    <span class="text-xs font-mono text-emerald-400 bg-emerald-950/30 border border-emerald-800/40 px-3 py-1 rounded">
-      Status: 200 OK
-    </span>
-    <h1 class="text-3xl font-bold text-zinc-100 mt-4 mb-2">¡Mensaje Recibido!</h1>
-    <p class="text-zinc-400 text-sm mb-6">
-      Gracias por comunicarte. Responderé a la brevedad a la casilla de correo proporcionada.
-    </p>
-    <a href="/" class="inline-block text-xs font-mono bg-zinc-800 hover:bg-zinc-700 text-zinc-200 px-4 py-2 rounded transition-colors">
-      &larr; Volver al inicio
-    </a>
-  </div>
+<Layout title="Ing. José Zapana - Portafolio & Docencia">
+  <main class="bg-background min-h-screen text-foreground antialiased selection:bg-primary selection:text-white">
+    <Hero />
+  </main>
 </Layout>
