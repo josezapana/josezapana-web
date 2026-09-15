@@ -1,24 +1,22 @@
 ---
-// Componente Hero / Sobre mí - Versión Alta Jerarquía
+import { translations } from '../data/i18n';
+const t = translations.es;
 ---
 
 <section id="sobre-mi" class="relative pt-16 pb-8 overflow-hidden">
-  <!-- Grid de Fondo -->
   <div class="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
 
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <!-- Encabezado de Sección Directo -->
+    <!-- Encabezado con estilo de tipografía Apple (Gris suave/Gradient) -->
     <div class="mb-6">
-      <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-        Sobre mí
+      <h1 id="hero-title" class="inline-block text-3xl md:text-4xl font-bold tracking-tight text-neutral-400 bg-gradient-to-r from-neutral-200 via-neutral-400 to-neutral-500 bg-clip-text text-transparent">
+        {t.hero.title}
       </h1>
       <div class="w-12 h-1 bg-gradient-primary mt-2 rounded-full"></div>
     </div>
 
-    <!-- Layout Principal: Foto + Descripción -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      
-      <!-- Columna Izquierda: Foto alineada al borde superior -->
+      <!-- Columna Foto -->
       <div class="lg:col-span-5 flex justify-center">
         <div class="relative group w-full max-w-sm">
           <div class="absolute -inset-0.5 bg-gradient-primary rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
@@ -33,80 +31,107 @@
         </div>
       </div>
 
-      <!-- Columna Derecha: Narrativa de Alto Impacto + Tarjetas -->
+      <!-- Columna Texto y Tarjetas -->
       <div class="lg:col-span-7 flex flex-col space-y-6">
-        
-        <!-- Párrafos con vocabulario Senior -->
-        <div class="space-y-3.5 text-foreground/90 text-base leading-relaxed">
-          <p>
-            Soy <strong class="text-foreground font-semibold">Ingeniero en Informática y primer egresado de la carrera</strong> con más de <strong class="text-foreground font-semibold">25 años de trayectoria profesional y docente.</strong> Me especializo en <strong class="text-foreground font-semibold">Ingeniería de Software y en el ciclo de vida del desarrollo de software</strong>, experiencia que complemento con una extensa labor universitaria dedicada a la docencia, la formación de profesionales y, actualmente, a la dirección de la carrera de Ingeniería Informática.
-          </p>
-          <p>
-            En el ámbito profesional, me desempeño como <strong class="text-foreground font-semibold">Coordinador de Tecnología e Innovación</strong> en <a href="https://blimop.tech" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Blimop.tech</a>, donde trabajo en arquitectura de software, aseguramiento de calidad e incorporación estratégica de inteligencia artificial en proyectos y soluciones
-          </p>
-          <p>
-            Mi visión combina la <strong class="text-foreground font-semibold">Ingeniería de Software, sus procesos y buenas prácticas</strong>, con una fuerte vocación por la formación y el desarrollo de las personas: <strong class="text-foreground font-semibold">formar profesionales, acompañar su crecimiento y potenciar equipos de alto rendimiento</strong>, capaces de afrontar nuevos desafíos tecnológicos y construir soluciones de calidad.
-          </p>
+        <!-- Contenedor con regla CSS estricta para el peso del texto -->
+        <div class="space-y-3.5 text-neutral-300 text-base leading-relaxed [&_strong]:font-semibold [&_strong]:text-neutral-100">
+          <p id="hero-p1" set:html={t.hero.p1}></p>
+          <p id="hero-p2" set:html={t.hero.p2}></p>
+          <p id="hero-p3" set:html={t.hero.p3}></p>
         </div>
 
-        <!-- Grilla 2x2 de Tarjetas -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-          
-            <!-- Universidad / Facultad de Ingeniería -->
-            <div class="glass-card p-3.5 rounded-xl flex items-start space-x-3 border border-border/50">
+          <!-- Tarjeta Universidad -->
+          <div class="glass-card p-3.5 rounded-xl flex items-start space-x-3 border border-border/50">
             <div class="p-2 bg-primary/10 text-primary rounded-lg shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
             </div>
             <div>
-                <span class="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Universidad</span>
-                <a href="https://www.fi.unju.edu.ar" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-primary hover:underline block">
-                Facultad de Ingeniería – UNJu
-                </a>
-                <span class="text-[11px] text-muted-foreground block mt-0.5">
-                Docente · Director de la carrera de Ingeniería Informática
-                </span>
+              <span id="card-univ-label" class="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">{t.hero.cards.univLabel}</span>
+              <a id="card-univ-title" href="https://www.fi.unju.edu.ar" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-primary hover:underline block">
+                {t.hero.cards.univTitle}
+              </a>
+              <span id="card-univ-sub" class="text-[11px] text-muted-foreground block mt-0.5">
+                {t.hero.cards.univSub}
+              </span>
             </div>
-            </div>
+          </div>
 
-          <!-- Tecnología e Innovación -->
+          <!-- Tarjeta Industria -->
           <div class="glass-card p-3.5 rounded-xl flex items-start space-x-3 border border-border/50">
             <div class="p-2 bg-primary/10 text-primary rounded-lg shrink-0 mt-0.5">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             </div>
             <div>
-              <span class="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Industria</span>
-              <a href="https://blimop.tech" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-primary hover:underline block">Blimop.tech</a>
-              <span class="text-[11px] text-muted-foreground">Coordinador de Tecnología e Innovación</span>
+              <span id="card-ind-label" class="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">{t.hero.cards.indLabel}</span>
+              <a id="card-ind-title" href="https://blimop.tech" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-primary hover:underline block">
+                {t.hero.cards.indTitle}
+              </a>
+              <span id="card-ind-sub" class="text-[11px] text-muted-foreground block mt-0.5">
+                {t.hero.cards.indSub}
+              </span>
             </div>
           </div>
 
-          <!-- Trayectoria -->
+          <!-- Tarjeta Trayectoria -->
           <div class="glass-card p-3.5 rounded-xl flex items-start space-x-3 border border-border/50">
             <div class="p-2 bg-primary/10 text-primary rounded-lg shrink-0 mt-0.5">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
             <div>
-              <span class="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Trayectoria</span>
-              <span class="text-xs font-bold text-foreground block">+25 años de experiencia</span>
-              <span class="text-[11px] text-muted-foreground">Docencia y Desarrollo de Software</span>
+              <span id="card-exp-label" class="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">{t.hero.cards.expLabel}</span>
+              <span id="card-exp-title" class="text-xs font-bold text-foreground block">{t.hero.cards.expTitle}</span>
+              <span id="card-exp-sub" class="text-[11px] text-muted-foreground block mt-0.5">{t.hero.cards.expSub}</span>
             </div>
           </div>
 
-          <!-- Especialización -->
+          <!-- Tarjeta Especialización -->
           <div class="glass-card p-3.5 rounded-xl flex items-start space-x-3 border border-border/50">
             <div class="p-2 bg-primary/10 text-primary rounded-lg shrink-0 mt-0.5">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 17 22 12"/></svg>
             </div>
             <div>
-              <span class="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Especialización</span>
-              <span class="text-xs font-bold text-foreground block">Mg. Ing. de Software (UNLP)</span>
-              <span class="text-[11px] text-muted-foreground">Cursada completa</span>
+              <span id="card-spec-label" class="block text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">{t.hero.cards.specLabel}</span>
+              <span id="card-spec-title" class="text-xs font-bold text-foreground block">{t.hero.cards.specTitle}</span>
+              <span id="card-spec-sub" class="text-[11px] text-muted-foreground block mt-0.5">{t.hero.cards.specSub}</span>
             </div>
           </div>
-
         </div>
       </div>
-
     </div>
   </div>
 </section>
+
+<script>
+  import { translations } from '../data/i18n';
+
+  const select = document.getElementById('lang-select') as HTMLSelectElement | null;
+  
+  if (select) {
+    select.addEventListener('change', (e) => {
+      const lang = (e.target as HTMLSelectElement).value as 'es' | 'en';
+      const t = translations[lang];
+
+      document.getElementById('hero-title')!.textContent = t.hero.title;
+      document.getElementById('hero-p1')!.innerHTML = t.hero.p1;
+      document.getElementById('hero-p2')!.innerHTML = t.hero.p2;
+      document.getElementById('hero-p3')!.innerHTML = t.hero.p3;
+
+      document.getElementById('card-univ-label')!.textContent = t.hero.cards.univLabel;
+      document.getElementById('card-univ-title')!.textContent = t.hero.cards.univTitle;
+      document.getElementById('card-univ-sub')!.textContent = t.hero.cards.univSub;
+
+      document.getElementById('card-ind-label')!.textContent = t.hero.cards.indLabel;
+      document.getElementById('card-ind-title')!.textContent = t.hero.cards.indTitle;
+      document.getElementById('card-ind-sub')!.textContent = t.hero.cards.indSub;
+
+      document.getElementById('card-exp-label')!.textContent = t.hero.cards.expLabel;
+      document.getElementById('card-exp-title')!.textContent = t.hero.cards.expTitle;
+      document.getElementById('card-exp-sub')!.textContent = t.hero.cards.expSub;
+
+      document.getElementById('card-spec-label')!.textContent = t.hero.cards.specLabel;
+      document.getElementById('card-spec-title')!.textContent = t.hero.cards.specTitle;
+      document.getElementById('card-spec-sub')!.textContent = t.hero.cards.specSub;
+    });
+  }
+</script>
