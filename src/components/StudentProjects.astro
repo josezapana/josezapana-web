@@ -6,7 +6,7 @@ const t = translations.es;
 <section id="alumnos" class="py-12 relative overflow-hidden w-full">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
-    <!-- Encabezado con acabado tipo Apple -->
+    <!-- Encabezado con estética Apple -->
     <div class="mb-6">
       <h2 id="projects-title" class="inline-block text-2xl md:text-3xl font-bold tracking-tight text-neutral-400 bg-gradient-to-r from-neutral-200 via-neutral-400 to-neutral-500 bg-clip-text text-transparent">
         Proyectos de Alumnos
@@ -14,23 +14,21 @@ const t = translations.es;
       <div class="w-12 h-1 bg-gradient-primary mt-2 rounded-full"></div>
     </div>
 
-    <!-- Layout de 1 sola columna a ancho completo (w-full) -->
-    <div class="w-full flex justify-center">
-      <div class="glass-card p-8 md:p-10 rounded-2xl border border-border/50 text-center w-full max-w-full my-2">
-        <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-          </svg>
-        </div>
-        
-        <h3 id="projects-empty-title" class="text-xl font-bold text-neutral-200 mb-3">
-          Portafolio en Actualización
-        </h3>
-        
-        <p id="projects-empty-desc" class="text-sm md:text-base text-neutral-400 leading-relaxed max-w-3xl mx-auto">
-          Próximamente se publicarán los trabajos finales de grado, proyectos de cátedra y desarrollos de vinculación destacados de la carrera de Ingeniería Informática.
-        </p>
+    <!-- Empty State: Contenedor full width sin Grid wrapper -->
+    <div class="glass-card p-8 md:p-10 rounded-2xl border border-border/50 text-center w-full my-2">
+      <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+        </svg>
       </div>
+      
+      <h3 id="projects-empty-title" class="text-xl font-bold text-neutral-200 mb-3">
+        Portafolio en Actualización
+      </h3>
+      
+      <p id="projects-empty-desc" class="text-sm md:text-base text-neutral-400 leading-relaxed max-w-3xl mx-auto">
+        Próximamente se publicarán los trabajos finales de grado, proyectos de cátedra y desarrollos de vinculación destacados de la carrera de Ingeniería Informática.
+      </p>
     </div>
 
   </div>

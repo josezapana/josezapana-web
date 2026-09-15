@@ -1,52 +1,51 @@
 ---
-const navLinks = [
-  { name: 'Sobre mí', href: '#sobre-mi' },
-  { name: 'Trayectoria', href: '#trayectoria' },
-  { name: 'Áreas', href: '#areas' },
-  { name: 'Materias', href: '#materias' },
-  { name: 'Proyectos Alumnos', href: '#alumnos' },
-  { name: 'Contacto', href: '#contacto' },
-];
+import { translations } from '../data/i18n';
+const t = translations.es;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-    <nav class="glass-card rounded-2xl px-4 py-3 flex items-center justify-between shadow-lg border border-border/50">
-      
-      <!-- Brand -->
-      <a href="#sobre-mi" class="flex items-center space-x-2">
-        <span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
-        <span class="font-bold text-base tracking-tight text-foreground">
-          Jose <span class="text-gradient">Zapana</span>
-        </span>
-      </a>
+<header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/40">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    
+    <!-- Branding / Logo (con scroll al top) -->
+    <a href="#inicio" class="font-bold text-base tracking-tight text-foreground hover:text-primary transition-colors">
+      Ing. José Zapana<span class="text-primary">.</span>
+    </a>
 
-      <!-- Navigation -->
-      <ul class="hidden md:flex items-center space-x-6 text-sm font-medium">
-        {navLinks.map((link) => (
-          <li>
-            <a 
-              href={link.href} 
-              class="text-muted-foreground hover:text-foreground transition-colors duration-200"
-            >
-              {link.name}
-            </a>
-          </li>
-        ))}
-      </ul>
+    <!-- Menú de Navegación -->
+    <div class="flex items-center space-x-6">
+      <nav class="hidden md:flex items-center space-x-6 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        <a href="#inicio" id="nav-home" class="hover:text-foreground transition-colors">Inicio</a>
+        <a href="#contacto" id="nav-contact" class="hover:text-foreground transition-colors">Contacto</a>
+      </nav>
 
       <!-- Language Selector -->
       <div class="relative">
         <select 
           id="lang-select" 
-          class="bg-neutral-900 text-foreground text-xs font-semibold rounded-lg px-2.5 py-1.5 border border-border/60 focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer appearance-none pr-6"
+          class="bg-neutral-900/80 border border-neutral-700/60 rounded-md text-xs text-foreground px-2.5 py-1 focus:outline-none focus:border-primary cursor-pointer transition-colors"
         >
-          <option value="es" selected class="bg-neutral-900 text-foreground">ES</option>
-          <option value="en" class="bg-neutral-900 text-foreground">EN</option>
+          <option value="es">ES</option>
+          <option value="en">EN</option>
         </select>
-        <span class="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground text-[10px]">▼</span>
       </div>
+    </div>
 
-    </nav>
   </div>
 </header>
+
+<script>
+  import { translations } from '../data/i18n';
+
+  const select = document.getElementById('lang-select') as HTMLSelectElement | null;
+  if (select) {
+    select.addEventListener('change', (e) => {
+      const lang = (e.target as HTMLSelectElement).value as 'es' | 'en';
+      
+      const navHome = document.getElementById('nav-home');
+      const navContact = document.getElementById('nav-contact');
+
+      if (navHome) navHome.textContent = lang === 'es' ? 'Inicio' : 'Home';
+      if (navContact) navContact.textContent = lang === 'es' ? 'Contacto' : 'Contact';
+    });
+  }
+</script>
