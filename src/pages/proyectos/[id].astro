@@ -43,14 +43,18 @@ const studentList = data.students || (data.student ? [data.student] : ['Alumno U
         {data.title}
       </h1>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm bg-neutral-900/60 p-5 rounded-xl border border-neutral-800">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm bg-neutral-900/60 p-5 rounded-xl border border-neutral-800">
         <div>
           <span class="block text-xs text-neutral-500 uppercase font-mono mb-1">Autor / Alumno</span>
           <span class="text-neutral-200 font-medium">{studentList.join(', ')}</span>
         </div>
         <div>
-          <span class="block text-xs text-neutral-500 uppercase font-mono mb-1">Cátedra / Carrera</span>
-          <span class="text-neutral-200 font-medium">{data.course || 'Ingeniería en Informática - UNJu'}</span>
+          <span class="block text-xs text-neutral-500 uppercase font-mono mb-1">Director de Proyecto</span>
+          <span class="text-neutral-200 font-medium">Ing. José Zapana</span>
+        </div>
+        <div>
+          <span class="block text-xs text-neutral-500 uppercase font-mono mb-1">Tipo de Trabajo</span>
+          <span class="text-neutral-200 font-medium">{data.course || 'Proyecto Final de Carrera - Ing. en Informática (UNJu)'}</span>
         </div>
       </div>
     </header>

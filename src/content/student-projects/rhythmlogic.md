@@ -4,7 +4,7 @@ description: "Transformación de un proceso manual de gestión de competencias d
 summary: "Transformación de un proceso manual de gestión de competencias de danza a una arquitectura distribuida tolerante a fallos parciales."
 student: "Araceli Florencia Aguilar"
 students: ["Araceli Florencia Aguilar"]
-course: "Trabajo Final de Carrera - Ingeniería en Informática"
+course: "Proyecto Final de Carrera - Ingeniería en Informática (UNJu - FI)"
 role: "Director de Trabajo Final de Carrera"
 academicYear: "2024"
 category: "Arquitectura de Software"
