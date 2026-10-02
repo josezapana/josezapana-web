@@ -1,19 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
+import StudentProjects from '../components/StudentProjects.astro';
 import ContactForm from '../components/ContactForm.astro';
 ---
 
-<Layout title="Ing. José Zapana | Cátedra e Investigación UNJu">
-  <!-- Navbar Fijo Superior -->
-  <Navbar />
-
-  <main class="bg-background min-h-screen text-foreground antialiased selection:bg-primary selection:text-white">
-    <!-- Hero / Sobre Mí -->
+<Layout title="Ing. José Zapana | UNJu">
+  <main>
     <Hero />
-
-    <!-- Sección de Contacto Directo -->
+    <StudentProjects />
     <ContactForm />
   </main>
 </Layout>

@@ -1,58 +1,34 @@
 ---
-import { translations } from '../data/i18n';
-const t = translations.es;
+interface Props {
+  title: string;
+  student: string;
+  summary: string;
+  tags: string[];
+  slug: string;
+}
+
+const { title, student, summary, tags, slug } = Astro.props;
 ---
 
-<section id="alumnos" class="py-12 relative overflow-hidden w-full">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    
-    <!-- Encabezado con acabado tipo Apple -->
-    <div class="mb-6">
-      <h2 id="projects-title" class="inline-block text-2xl md:text-3xl font-bold tracking-tight text-neutral-400 bg-gradient-to-r from-neutral-200 via-neutral-400 to-neutral-500 bg-clip-text text-transparent">
-        Proyectos de Alumnos
-      </h2>
-      <div class="w-12 h-1 bg-gradient-primary mt-2 rounded-full"></div>
-    </div>
-
-    <!-- Layout de 1 sola columna a ancho completo (w-full) -->
-    <div class="w-full flex justify-center">
-      <div class="glass-card p-8 md:p-10 rounded-2xl border border-border/50 text-center w-full max-w-full my-2">
-        <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-          </svg>
-        </div>
-        
-        <h3 id="projects-empty-title" class="text-xl font-bold text-neutral-200 mb-3">
-          Portafolio en Actualización
-        </h3>
-        
-        <p id="projects-empty-desc" class="text-sm md:text-base text-neutral-400 leading-relaxed max-w-3xl mx-auto">
-          Próximamente se publicarán los trabajos finales de grado, proyectos de cátedra y desarrollos de vinculación destacados de la carrera de Ingeniería Informática.
-        </p>
-      </div>
-    </div>
-
+<a 
+  href={`/proyectos/${slug}`} 
+  class="group block p-6 bg-neutral-900/60 border border-neutral-800 rounded-xl hover:border-neutral-700 transition-all duration-200"
+>
+  <h3 class="text-lg font-bold text-white group-hover:text-primary transition-colors mb-2">
+    {title}
+  </h3>
+  <p class="text-xs font-medium text-neutral-400 mb-3">
+    Autor: <span class="text-neutral-200">{student}</span>
+  </p>
+  <p class="text-sm text-neutral-400 line-clamp-3 mb-4 leading-relaxed">
+    {summary}
+  </p>
+  
+  <div class="flex flex-wrap gap-1.5">
+    {tags.map((tag) => (
+      <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-800 text-neutral-300 border border-neutral-700/50">
+        {tag}
+      </span>
+    ))}
   </div>
-</section>
-
-<script>
-  import { translations } from '../data/i18n';
-
-  const select = document.getElementById('lang-select') as HTMLSelectElement | null;
-  if (select) {
-    select.addEventListener('change', (e) => {
-      const lang = (e.target as HTMLSelectElement).value as 'es' | 'en';
-      
-      const title = document.getElementById('projects-title');
-      const emptyTitle = document.getElementById('projects-empty-title');
-      const emptyDesc = document.getElementById('projects-empty-desc');
-
-      if (title) title.textContent = lang === 'es' ? 'Proyectos de Alumnos' : 'Student Projects';
-      if (emptyTitle) emptyTitle.textContent = lang === 'es' ? 'Portafolio en Actualización' : 'Portfolio Under Construction';
-      if (emptyDesc) emptyDesc.textContent = lang === 'es' 
-        ? 'Próximamente se publicarán los trabajos finales de grado, proyectos de cátedra y desarrollos de vinculación destacados de la carrera de Ingeniería Informática.'
-        : 'Featured capstone projects, course work, and industry collaboration initiatives from Computer Engineering students will be published soon.';
-    });
-  }
-</script>
+</a>

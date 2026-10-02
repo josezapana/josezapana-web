@@ -1,0 +1,154 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('student-projects');
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const data = project.data as any;
+
+const studentList = data.students || (data.student ? [data.student] : ['Alumno UNJu']);
+---
+
+<Layout title={`${data.title} | Proyecto de Alumno`}>
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <!-- Botón Volver -->
+    <a 
+      href="/#alumnos" 
+      class="inline-flex items-center text-xs font-mono text-neutral-400 hover:text-white mb-8 transition-colors"
+    >
+      &larr; Volver a proyectos
+    </a>
+
+    <!-- Header del Proyecto -->
+    <header class="border-b border-neutral-800 pb-8 mb-10">
+      <div class="flex flex-wrap gap-2 mb-4">
+        {data.tags?.map((tag: string) => (
+          <span class="text-xs font-mono px-2.5 py-1 rounded bg-neutral-900 border border-neutral-800 text-neutral-300">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+        {data.title}
+      </h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm bg-neutral-900/60 p-5 rounded-xl border border-neutral-800">
+        <div>
+          <span class="block text-xs text-neutral-500 uppercase font-mono mb-1">Autor / Alumno</span>
+          <span class="text-neutral-200 font-medium">{studentList.join(', ')}</span>
+        </div>
+        <div>
+          <span class="block text-xs text-neutral-500 uppercase font-mono mb-1">Cátedra / Carrera</span>
+          <span class="text-neutral-200 font-medium">{data.course || 'Ingeniería en Informática - UNJu'}</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Topología de Arquitectura Vectorial -->
+    <section class="my-10 p-6 bg-neutral-900/80 border border-neutral-800 rounded-2xl shadow-2xl overflow-x-auto">
+      <h3 class="text-xs font-mono uppercase tracking-wider text-cyan-400 mb-6 text-center">Topología de la Arquitectura de Microservicios</h3>
+      
+      <div class="min-w-[650px] flex flex-col gap-6 text-xs font-mono">
+        <div class="grid grid-cols-3 gap-4 text-center">
+          <div class="p-3 bg-neutral-800/90 border border-neutral-700 rounded-lg text-neutral-200">
+            <span class="block font-bold text-white mb-1">CLIENTES</span>
+            Web (React) / Mobile PWA
+          </div>
+          <div class="p-3 bg-blue-950/40 border border-blue-800/60 rounded-lg text-blue-200">
+            <span class="block font-bold text-blue-400 mb-1">API GATEWAY</span>
+            Flask REST API
+          </div>
+          <div class="p-3 bg-neutral-800/90 border border-neutral-700 rounded-lg text-neutral-200">
+            <span class="block font-bold text-white mb-1">AUTENTICACIÓN</span>
+            Google OAuth 2.0 / JWT
+          </div>
+        </div>
+
+        <div class="text-center text-neutral-600 font-bold">↓ REST / JSON HTTP Async ↓</div>
+
+        <div class="p-4 bg-neutral-950 border border-neutral-800 rounded-xl">
+          <span class="block font-bold text-neutral-400 mb-3 text-center uppercase tracking-widest text-[10px]">Ecosistema de Microservicios Desacoplados</span>
+          <div class="grid grid-cols-3 gap-3 text-center">
+            <div class="p-2.5 bg-neutral-900 border border-neutral-800 rounded text-neutral-300">MS Seguridad</div>
+            <div class="p-2.5 bg-neutral-900 border border-neutral-800 rounded text-neutral-300">MS Competencia</div>
+            <div class="p-2.5 bg-neutral-900 border border-neutral-800 rounded text-neutral-300">MS Inscripción</div>
+            <div class="p-2.5 bg-neutral-900 border border-neutral-800 rounded text-neutral-300">MS Cronograma</div>
+            <div class="p-2.5 bg-neutral-900 border border-neutral-800 rounded text-neutral-300">MS Evaluación</div>
+            <div class="p-2.5 bg-neutral-900 border border-neutral-800 rounded text-neutral-300">MS Notificación (FCM)</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 text-center">
+          <div class="p-3 bg-cyan-950/30 border border-cyan-800/50 rounded-lg text-cyan-200">
+            <span class="block font-bold text-cyan-400 mb-1">BASES DE DATOS</span>
+            MySQL (Database per Service)
+          </div>
+          <div class="p-3 bg-emerald-950/30 border border-emerald-800/50 rounded-lg text-emerald-200">
+            <span class="block font-bold text-emerald-400 mb-1">OBJECT STORAGE</span>
+            MinIO (S3 Buckets de Audio & PDFs)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contenido Markdown Inyectado -->
+    <div class="markdown-body text-neutral-300 text-base leading-relaxed">
+      <Content />
+    </div>
+
+  </article>
+</Layout>
+
+<style is:global>
+  .markdown-body h2 {
+    color: #ffffff !important;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    line-height: 2rem !important;
+    margin-top: 2.5rem !important;
+    margin-bottom: 1.25rem !important;
+    padding-bottom: 0.5rem !important;
+    border-bottom: 1px solid #262626 !important;
+  }
+  .markdown-body p {
+    margin-bottom: 1.5rem !important;
+    line-height: 1.8 !important;
+    color: #d4d4d4 !important;
+  }
+  .markdown-body strong {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+  }
+  .markdown-body ul {
+    margin-top: 1rem !important;
+    margin-bottom: 1.5rem !important;
+    padding-left: 1.5rem !important;
+    list-style-type: disc !important;
+  }
+  .markdown-body ol {
+    margin-top: 1rem !important;
+    margin-bottom: 1.5rem !important;
+    padding-left: 1.5rem !important;
+    list-style-type: decimal !important;
+  }
+  .markdown-body li {
+    margin-bottom: 0.75rem !important;
+    line-height: 1.625 !important;
+    color: #d4d4d4 !important;
+  }
+  .markdown-body hr {
+    border-color: #262626 !important;
+    margin-top: 2.5rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+</style>
